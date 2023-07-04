@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/vacaramin/go-websocket-chatroom/initilaizers"
+)
 
 func main() {
-	fmt.Println("Go- Websocket Chatroom")
+	fmt.Println(initilaizers.Greet("Waqar Amin"))
 }
