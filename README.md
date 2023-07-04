@@ -31,8 +31,27 @@ Before running this application, make sure you have the following installed:
    ```shell
    go build
    
-4. **Build the Go application:**
+4. **Start the server:**
    ```shell
-   go build
-   
+   ./go-websocket-chatroom
 
+## 🚀 Usage
+
+- Open your preferred web browser and visit http://localhost:8080.
+- Enter a username in the provided input field and click "Join Chat" to join the chatroom.
+- Start sending and receiving messages in real-time! ✉️💬
+
+## 🤝 Contributing
+
+Contributions are welcome! If you find any issues or want to enhance the functionality of this application, feel free to open an issue or submit a pull request. Please make sure to follow the Contributing Guidelines when contributing.
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+## 📞 Contact
+
+If you have any questions or need any assistance, feel free to reach out:
+
+- Your Name: vacaramin86@gmail.com
+- Project Link: https://github.com/vacaramin/go-websocket-chatroom
