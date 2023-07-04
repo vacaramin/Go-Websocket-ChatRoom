@@ -1,11 +1,10 @@
 package main
 
-import (
-	"fmt"
-
-	"github.com/vacaramin/go-websocket-chatroom/initilaizers"
-)
+import "net/http"
 
 func main() {
-	fmt.Println(initilaizers.Greet("Waqar Amin"))
+	setupApi()
+}
+func setupApi() {
+	http.Handle("/", http.FileServer(http.Dir("./frontend")))
 }
