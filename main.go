@@ -10,5 +10,7 @@ func main() {
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 func setupApi() {
+	manager := NewManager()
 	http.Handle("/", http.FileServer(http.Dir("./frontend")))
+	http.HandleFunc("/ws", manager.serveWs)
 }

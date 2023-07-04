@@ -22,5 +22,12 @@ func NewManager() *Manager {
 }
 
 func (m *Manager) serveWs(w http.ResponseWriter, r *http.Request) {
-	log.Println("New Location")
+	log.Println("New Connection")
+	//Upgrade Regular HTTP to Websocket
+	conn, err := webSocketUpgrader.Upgrade(w, r, nil)
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	conn.Close()
 }
