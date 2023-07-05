@@ -1,14 +1,95 @@
 body {
-  overflow: hidden;
-  padding: 0%;
   margin: 0;
-  width: 100%;
-  height: 100%;
-  background-color: gray;
+  padding: 0;
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
 }
+
 .center {
   margin: auto;
   width: 50%;
-  border: 3px solid black;
-  padding: 10px;
+  max-width: 800px;
+  background-color: #fff;
+  border: 3px solid #333;
+  border-radius: 5px;
+  padding: 20px;
+  box-sizing: border-box;
 }
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+h3 {
+  text-align: center;
+  color: #666;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+  color: #333;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+input[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+input[type="submit"]:hover {
+  background-color: #555;
+}
+
+.messagearea {
+  width: 100%;
+  height: 200px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+  font-size: 14px;
+  overflow-y: auto;
+}
+
+.placeholder {
+  color: #999;
+}
+
+.chatroom-selection,
+.chatroom-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chatroom-selection label,
+.chatroom-message label {
+  margin-right: 10px;
+}
+
+.chatroom-selection input[type="submit"],
+.chatroom-message input[type="submit"] {
+  margin-left: 10px;
+}
+
+/* Add any additional styling or modifications as needed */
+

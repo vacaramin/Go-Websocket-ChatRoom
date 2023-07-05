@@ -37,6 +37,6 @@ func (c *Client) readMessages() {
 			break
 		}
 		log.Println(messageType)
-		log.Println(payload)
+		log.Println(string(payload))
 	}
 }
