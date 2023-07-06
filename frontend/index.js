@@ -1,4 +1,28 @@
 var selectedChat = "general";
+
+class Event{
+  constructor(type,payload) {
+    this.type = type;
+    this.payload = payload;
+  }
+}
+
+function routeEvent(event){
+  if (event.type === undefined){
+    alert('no type field in the event')
+  }
+  switch(event.type){
+    case "new_message":
+      console.log("new Message");
+    default:
+      alert("unsupported message type");
+      break;
+  }
+}
+function sendEvent(eventName,payload){
+  const event = new Event(eventName,payload);
+  conn.send(JSON.stringify(event))
+}
 function changeChatRoom() {
   var newChat = document.getElementById("chatroom");
   if (newChat != null && newChat.value != selectedChat) {
