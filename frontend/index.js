@@ -22,7 +22,10 @@ window.onload = function(){
       //connect ws
       console.log("websocket Supported")
       conn = new WebSocket("ws://" +document.location.host + "/ws")
-  }else{
+      conn.onmessage= function(evt){
+        console.log(evt)
+      }
+    }else{
       console.log("Browswer doesn't support websocket")
   }
 
