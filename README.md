@@ -53,5 +53,4 @@ This project is licensed under the MIT License.
 
 If you have any questions or need any assistance, feel free to reach out:
 
-- Your Name: vacaramin86@gmail.com
-- Project Link: https://github.com/vacaramin/go-websocket-chatroom
+- Email: vacaramin86@gmail.com
