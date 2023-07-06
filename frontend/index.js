@@ -35,7 +35,7 @@ function sendMessage() {
   var newMessage = document.getElementById("message");
   if (newMessage != null) {
     console.log(newMessage.value)
-    conn.send(newMessage.value)
+    sendEvent("send_message", newMessage.value)
   }
   return false;
 }
@@ -47,7 +47,9 @@ window.onload = function(){
       console.log("websocket Supported")
       conn = new WebSocket("ws://" +document.location.host + "/ws")
       conn.onmessage= function(evt){
-        console.log(evt)
+       const eventData = JSON.parse(evt.data);
+       const event = Object.assign(new Event, eventData)
+        routeEvent(event)
       }
     }else{
       console.log("Browswer doesn't support websocket")
