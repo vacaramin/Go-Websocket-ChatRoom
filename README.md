@@ -1,4 +1,5 @@
 # 🚀 Go WebSocket Chatroom
+![Frontend of Chat Application](https://github.com/vacaramin/Go-Websocket-ChatRoom/blob/main/Public/Chatroom%20Frontend.png)
 
 Welcome to the Go WebSocket Chatroom! This is a simple chatroom application implemented using WebSockets in the Go language. The application allows multiple users to join a chatroom and exchange messages in real-time. 💬
 
