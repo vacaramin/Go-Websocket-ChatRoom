@@ -34,7 +34,11 @@ func (c *Client) readMessages() {
 	defer func() {
 		c.manager.removeClient(c)
 	}()
-
+	if err := c.connection.SetReadDeadline(time.Now().Add(pongWait)); err != nil {
+		log.Println(err)
+		return
+	}
+	c.connection.SetPongHandler(c.pongHandler)
 	for {
 		_, payload, err := c.connection.ReadMessage()
 
@@ -87,4 +91,9 @@ func (c *Client) writeMessages() {
 		}
 	}
 
+}
+
+func (c *Client) pongHandler(pongMsg string) error {
+	log.Println("pong")
+	return c.connection.SetReadDeadline(time.Now().Add(pongWait))
 }
