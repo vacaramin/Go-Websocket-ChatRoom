@@ -36,6 +36,11 @@ func (m *Manager) setupEventHandlers() {
 }
 func SendMessage(event Event, c *Client) error {
 	fmt.Println(event)
+	message, err := event.Payload.MarshalJSON()
+	if err != nil {
+		log.Println(err)
+	}
+	c.connection.WriteMessage(websocket.TextMessage, message)
 	return nil
 }
 func (m *Manager) routeEvent(event Event, c *Client) error {
