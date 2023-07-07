@@ -14,6 +14,8 @@
     <div class="center">
       <h1>Chat Application Frontend</h1>
       <h3 id="chat-header">Currently in chat: General</h3>
+      <h3 id="connection-header">Connected to websocket: false</h3>
+
       <form action="" id="chatroom-selection">
         <label for="chatroom">Chatroom:</label>
         <input
@@ -45,6 +47,18 @@
         <br><br>
         <input type="submit" value="send message" />
       </form>
+
+      <div style = "border: 3px solid black; margin-top:30px;">
+        <form action="" id = "login-form">
+          <label for="username"> username:</label>
+          <input type="text" name="username" id="username"><br>
+          <label for="password"> password:</label>
+          <input type="password" name="password" id="password">
+
+          <br /><br />
+          <input type="submit" value="login">
+        </form>
+      </div>
     </div>
     <script src="index.js"></script>
   </body>

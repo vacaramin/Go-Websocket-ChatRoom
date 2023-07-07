@@ -36,6 +36,7 @@ label {
 }
 
 input[type="text"],
+input[type="password"],
 textarea {
   width: 100%;
   padding: 10px;

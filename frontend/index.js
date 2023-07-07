@@ -39,20 +39,55 @@ function sendMessage() {
   }
   return false;
 }
-window.onload = function(){
-  document.getElementById("chatroom-selection").onsubmit = changeChatRoom
-  document.getElementById("chatroom-message").onsubmit = sendMessage
-  if(window["WebSocket"]){
+
+function login(){
+let formData = {
+  "username": document.getElementById("username").value,
+  "password": document.getElementById("password").value
+}
+fetch("login",{
+  method: 'post',
+  body: JSON.stringify(formData),
+  mode:'cors'
+}).then((response) => {
+  if(response.ok){
+    return response.json();
+  }else {
+    throw "unauthorized";
+  }
+  }).then((data)=>{
+    //we are authenticated
+  connectWebsocket(data.otp)
+  }).catch((e) => {alert(e)});
+return false
+
+
+}
+function connectWebsocket(otp){
+
+    if(window["WebSocket"]){
       //connect ws
       console.log("websocket Supported")
-      conn = new WebSocket("ws://" +document.location.host + "/ws")
+      conn = new WebSocket("ws://" +document.location.host + "/ws?otp=",otp)
+      conn.onopen = function (evt){
+        document.getElementById("connection-header").innerHTML = "Connected to websocket = true"
+      }
+      conn.onclose = function (evt){
+        document.getElementById("connection-header").innerHTML = "Connected to websocket = false"
+        //reconnect
+      }
       conn.onmessage= function(evt){
-       const eventData = JSON.parse(evt.data);
-       const event = Object.assign(new Event, eventData)
+        const eventData = JSON.parse(evt.data);
+        const event = Object.assign(new Event, eventData)
         routeEvent(event)
       }
     }else{
       console.log("Browswer doesn't support websocket")
-  }
+    }
 
+  }
+window.onload = function() {
+  document.getElementById("chatroom-selection").onsubmit = changeChatRoom
+  document.getElementById("chatroom-message").onsubmit = sendMessage
+  document.getElementById("login-form").onsubmit = login
 }
