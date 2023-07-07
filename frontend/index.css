@@ -89,6 +89,7 @@ input[type="submit"]:hover {
 .chatroom-selection input[type="submit"],
 .chatroom-message input[type="submit"] {
   margin-left: 10px;
+  margin-top:10px;
 }
 
 /* Add any additional styling or modifications as needed */

@@ -19,4 +19,5 @@
 
 # Go workspace file
 go.work
-.idea
+# Goland file removed
+.idea/
