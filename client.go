@@ -60,7 +60,7 @@ func (c *Client) writeMessages() {
 	defer func() {
 		c.manager.removeClient(c)
 	}()
-
+	ticker := time.NewTicker(pingInterval)
 	for {
 		select {
 		case message, ok := <-c.egress:
@@ -78,6 +78,12 @@ func (c *Client) writeMessages() {
 				log.Printf("failed to send message: %v", err)
 			}
 			log.Println("message sent")
+		case <-ticker.C:
+			log.Println("Ping")
+			if err := c.connection.WriteMessage(websocket.PingMessage, []byte(``)); err != nil {
+				log.Println("writeMessage Error:", err)
+				return
+			}
 		}
 	}
 
