@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"errors"
 	"fmt"
 	"log"
@@ -71,6 +72,34 @@ func (m *Manager) serveWs(w http.ResponseWriter, r *http.Request) {
 	//start client messages
 	go client.readMessages()
 	go client.writeMessages()
+}
+
+func (m *Manager) loginHandler(w http.ResponseWriter, r *http.Request) {
+	type userLoginRequest struct {
+		UserName string `json:"username"`
+		Password string `json:"password"`
+	}
+	var req userLoginRequest
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		http.Error(w, err.Error(), http.StatusBadRequest)
+	}
+	if req.UserName == "vacaramin" && req.Password == "password" {
+		type response struct {
+			OTP string `json:"otp"`
+		}
+		otp := m.otps.NewOTP()
+		resp := response{
+			OTP: otp.Key,
+		}
+		data, err := json.Marshal(resp)
+		if err != nil {
+			log.Println(err)
+		}
+		w.WriteHeader(http.StatusOK)
+		w.Write(data)
+		return
+	}
+	w.WriteHeader(http.StatusUnauthorized)
 }
 
 func (m *Manager) addClient(client *Client) {
