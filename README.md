@@ -22,7 +22,7 @@ Before running this application, make sure you have the following installed:
 1. **Clone this repository to your local machine:**
 
    ```shell
-   git clone https://github.com/your-username/go-websocket-chatroom.git
+   git clone https://github.com/vacaramin/go-websocket-chatroom.git
 
 2. **Change to the project directory:**
    ```shell
