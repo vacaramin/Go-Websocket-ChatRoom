@@ -68,7 +68,7 @@ function connectWebsocket(otp){
     if(window["WebSocket"]){
       //connect ws
       console.log("websocket Supported")
-      conn = new WebSocket("ws://" +document.location.host + "/ws?otp=",otp)
+      conn = new WebSocket("ws://" +document.location.host + "/ws?otp=" +otp)
       conn.onopen = function (evt){
         document.getElementById("connection-header").innerHTML = "Connected to websocket = true"
       }
